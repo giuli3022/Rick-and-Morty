@@ -1,1 +1,44 @@
 @use "styles" as styles;
+
+.Home {
+    background-image: url("/assets/imgs/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    section {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 0 0 2rem 0;
+        }
+        input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem
+        }
+    }
+    &-options {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        button {
+            background-color: #04B1CB;
+            width: calc(50% - 0.5rem);
+            height: 3rem;
+            border: 1px solid #00382B;
+            border-radius: 4px;
+        }
+    }
+}
