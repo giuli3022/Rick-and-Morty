@@ -1,11 +1,17 @@
 <section class="CharactersList">
-    <a class="Button--back" routerLink="/home">Return to past</a>
+  <a class="Button--back" routerLink="/home">Return to past</a>
+  <article>
     <input type="text" placeholder="Search someone..." />
-    <div class="CharactersList__options">
-      <a class="Button--primary" [routerLink]="[ '/characters' ]">Look at all the options</a>
-      <a class="Button--primary" [routerLink]="[ '/character' ]">Find someone interesting!</a>
+    <div class="CharactersList__actions mb-4">
+      <a class="Button--secondary" [routerLink]="['/characters']">
+        I want to be more specific...
+      </a>
+      <a class="Button--primary" [routerLink]="['/character']">
+        Find someone interesting!
+      </a>
     </div>
-    <article>
-        
-    </article>
+    <div>
+      <app-character-card></app-character-card>
+    </div>
+  </article>
 </section>
