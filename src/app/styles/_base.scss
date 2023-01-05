@@ -4,6 +4,10 @@ body {
 	height: 100%;
 }
 body {
+	background-image: url("/assets/imgs/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 	font-family: "Contrail One", cursive;
 	margin: 0;
 }

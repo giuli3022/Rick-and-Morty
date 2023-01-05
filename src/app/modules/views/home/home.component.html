@@ -1,10 +1,11 @@
-<article class="Home">
-  <section>
-    <h1>Looking for someone special in the galaxy?</h1>
+<section class="Home">
+  <article>
+    <h1>Looking for someone special</h1>
+    <h1>in the galaxy?</h1>
     <input type="text" placeholder="Search someone..." />
-    <div class="Home-options">
-      <button>Find someone interesting</button>
-      <button>Look at all the options!</button>
+    <div class="Home__options">
+      <a class="Button--primary">Look at all the options</a>
+      <a class="Button--primary" [routerLink]="[ '/character' ]">Find someone interesting!</a>
     </div>
-  </section>
-</article>
+  </article>
+</section>
