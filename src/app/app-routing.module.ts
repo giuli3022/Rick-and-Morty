@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { CharacterComponent } from './modules/views/character/character.component'
-import { CharactersListComponent } from './modules/views/characters-list/characters-list.component'
+import { CharactersComponent } from './modules/views/characters/characters.component'
 import { HomeComponent } from './modules/views/home/home.component'
 
 const routes: Routes = [
@@ -15,12 +15,12 @@ const routes: Routes = [
 		component: HomeComponent,
 	},
 	{
-		path: 'character',
+		path: 'character/:id',
 		component: CharacterComponent
 	},
 	{
 		path: 'characters',
-		component: CharactersListComponent
+		component: CharactersComponent
 	},
 	{
 		path: '',

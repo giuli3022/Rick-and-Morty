@@ -1,26 +1,32 @@
+import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './modules/views/home/home.component';
 import { CharacterComponent } from './modules/views/character/character.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CharactersListComponent } from './modules/views/characters-list/characters-list.component';
-import { CharacterCardComponent } from './modules/components/character-card/character-card.component';
+import { CharacterListComponent } from './modules/components/character-list/character-list.component';
+import { CharactersComponent } from './modules/views/characters/characters.component';
+
+const components = [
+  AppComponent,
+  HomeComponent,
+  CharacterComponent,
+  CharactersComponent,
+  CharacterListComponent
+]
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    CharacterComponent,
-    CharactersListComponent,
-    CharacterCardComponent
+    ...components
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

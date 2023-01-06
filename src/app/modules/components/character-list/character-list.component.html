@@ -1,0 +1,10 @@
+<section class="CharacterList">
+  <article class="CharacterCard" *ngFor="let character of characters">
+    <a [routerLink]="['/character', character.id]">
+      <img [src]="character.image" [alt]="character.name" />
+      <div class="CharacterCard__info">
+        <p>{{ character.name }}</p>
+      </div>
+    </a>
+  </article>
+</section>
