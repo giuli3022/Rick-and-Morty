@@ -2,14 +2,15 @@
   <a class="Button--back" routerLink="/">Return to past</a>
   <article>
     <h1>Is what you looking for?</h1>
+   
     <div class="Character__card">
       <div class="Character__img">
-        <img src="" alt="" />
+        <img [src]="character.image" [alt]="character.name" />
       </div>
       <div class="Character__info">
-        <h3>Rick Sanchez</h3>
+        <h3>{{ character.name }}</h3>
         <button class="Button--label">Human</button>
-        <p>Male</p>
+        <p>{{ character.gender }}</p>
         <p>Earth</p>
         <div class="Character__info--actions">
           <a class="Button--secondary">In another timeline</a>
