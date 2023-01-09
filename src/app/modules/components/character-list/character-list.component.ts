@@ -27,7 +27,6 @@ export class CharacterListComponent implements OnInit {
   private getCharacters(): void {
     this.charactersService.getAllCharacters()
       .subscribe((res: any) => {
-        console.log('3', res)
         this.characters = res.charactersList
         this.info = res.info
       })

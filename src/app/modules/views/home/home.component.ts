@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CharactersService } from 'src/app/shared/characters.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  id = 1
+  count = 100
 
-  constructor() { }
+  constructor(private charactersService: CharactersService) { }
 
   ngOnInit(): void {
+    this.getRandomId()
+  }
+
+  getRandomId() {
+    this.charactersService.getAllCharacters()
+      .subscribe((res: any) => {
+        this.count = res.info.count
+        console.log('count', this.count)
+      })
+    this.id = Math.floor(Math.random() * this.count);
+    console.log('id', this.id)
   }
 
 }

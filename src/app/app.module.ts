@@ -7,6 +7,7 @@ import { CharacterComponent } from './modules/views/character/character.componen
 import { AppRoutingModule } from './app-routing.module';
 import { CharacterListComponent } from './modules/components/character-list/character-list.component';
 import { CharactersComponent } from './modules/views/characters/characters.component';
+import { CommonModule } from '@angular/common';
 
 const components = [
   AppComponent,
@@ -23,7 +24,8 @@ const components = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
