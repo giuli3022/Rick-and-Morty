@@ -8,18 +8,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { CharacterListComponent } from './modules/components/character-list/character-list.component';
 import { CharactersComponent } from './modules/views/characters/characters.component';
 import { CommonModule } from '@angular/common';
+import { SearchComponent } from './modules/components/search/search.component';
 
 const components = [
   AppComponent,
   HomeComponent,
   CharacterComponent,
   CharactersComponent,
-  CharacterListComponent
+  CharacterListComponent,
+  SearchComponent
 ]
 
 @NgModule({
   declarations: [
-    ...components
+    ...components,
   ],
   imports: [
     BrowserModule,
