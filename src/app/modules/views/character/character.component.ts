@@ -20,9 +20,7 @@ export class CharacterComponent implements OnInit {
       const id = params['id']
       this.charactersService.getCharacter(id)
         .subscribe((res: any) => {
-          console.log('3', res)
           this.character = res;
-          console.log('4', this.character)
         })
     })
   }

@@ -20,10 +20,8 @@ export class HomeComponent implements OnInit {
     this.charactersService.getAllCharacters()
       .subscribe((res: any) => {
         this.count = res.info.count
-        console.log('count', this.count)
       })
     this.id = Math.floor(Math.random() * this.count);
-    console.log('id', this.id)
   }
 
 }

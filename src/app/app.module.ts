@@ -27,6 +27,9 @@ const components = [
     HttpClientModule,
     CommonModule
   ],
+  exports: [
+    ...components
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

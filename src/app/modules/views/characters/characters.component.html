@@ -1,15 +1,7 @@
 <section class="CharactersList">
-  <a class="Button--back" >Return to past</a>
+  <a class="Button--back" routerLink="/">Return to past</a>
   <article>
-    <input type="text" placeholder="Search someone..." />
-    <div class="CharactersList__actions mb-4">
-      <a class="Button--secondary">
-        I want to be more specific...
-      </a>
-      <a class="Button--primary">
-        Find someone interesting!
-      </a>
-    </div>
+    <input type="text" (keyup)="applyFilter($event)" placeholder="Search someone..." />
     <app-character-list></app-character-list>
   </article>
 </section>

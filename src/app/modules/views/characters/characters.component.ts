@@ -16,4 +16,11 @@ export class CharactersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+	applyFilter(event: Event) {
+		const filterValue = (event.target as HTMLInputElement).value
+    console.log(filterValue)
+	//	this.designersSource.filter = filterValue.trim().toLowerCase()
+	}
+
 }
