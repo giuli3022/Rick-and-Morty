@@ -14,15 +14,30 @@ export class CharacterComponent implements OnInit {
   character: any;
 
   constructor(private charactersService: CharactersService, private route: ActivatedRoute) { }
+  id = 1
+  count = 100
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const id = params['id']
-      this.charactersService.getCharacter(id)
+      this.id = params['id']
+      this.charactersService.getCharacter(this.id)
         .subscribe((res: any) => {
           this.character = res;
         })
     })
+    this.getRandomId()
+  }
+
+  ngOnChanges(): void {
+    this.getRandomId()
+  }
+
+  getRandomId() {
+    this.charactersService.getAllCharacters()
+      .subscribe((res: any) => {
+        this.count = res.info.count
+      })
+    this.id = Math.floor(Math.random() * this.count);
   }
 
 }

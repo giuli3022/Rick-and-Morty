@@ -2,7 +2,7 @@
   <a class="Button--back" routerLink="/">Return to past</a>
   <article>
     <h1>Is what you looking for?</h1>
-   
+
     <div class="Character__card">
       <div class="Character__img">
         <img [src]="character.image" [alt]="character.name" />
@@ -13,10 +13,52 @@
         <p>{{ character.gender }}</p>
         <p>Earth</p>
         <div class="Character__info--actions">
-          <a class="Button--secondary">In another timeline</a>
-          <a class="Button--primary">Say hello!</a>
+          <a class="Button--secondary" [routerLink]="['/character', id]"
+            >In another timeline</a
+          >
+          <a
+            type="button"
+            class="Button--primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            >Say hello!</a
+          >
         </div>
       </div>
     </div>
   </article>
 </section>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Say something nice to {{ character.name }}
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <textarea name="message" id="" cols="30" rows="10">
+        </textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="Button--secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="Button--primary">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
