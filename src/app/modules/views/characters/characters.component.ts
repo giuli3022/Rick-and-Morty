@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
+import { Component, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Character } from 'src/app/shared/characters.interface';
 import { CharactersService } from 'src/app/shared/characters.service';
 
@@ -14,31 +13,35 @@ type RequestInfo = {
   styleUrls: ['./characters.component.scss']
 })
 
-export class CharactersComponent {
-  characters: Character[] = []
+export class CharactersComponent implements OnChanges {
+  @Output() characters: Character[] = []
   info: RequestInfo = {
     next: '',
   };
   private page = 1
-  private query: string = '';
+  query: string = '';
+  filterValue: string = '';
 
-  constructor(private router: Router, private charactersService: CharactersService) { }
+  constructor(private charactersService: CharactersService) { }
 
-  ngOnInit(): void {
-    this.getCharacters();
+	ngOnChanges(changes: SimpleChanges): void {
+    if (changes && changes['query']) {
+      this.filterValue = changes['query'].currentValue
+    }
+    this.getCharacters(this.query)
   }
 
-  getCharactersByQuery(): void {
-    /*this.route.queryParams.subscribe((params: ParamMap) => {
-      this.query = params['q'];
-      this.getCharacters();
-    });*/
-    this.query = 'morty';
-    this.getCharacters();
+
+  applyFilter(event: Event) {
+    this.query = (event.target as HTMLInputElement).value
+    if (this.query && this.query.length > 3) {
+      this.getCharacters(this.query)
+    }
   }
 
-  getCharacters(): void {
-    this.charactersService.filterCharacters(this.query)
+  getCharacters(query: string | null): void {
+    console.log('1', query)
+    this.charactersService.filterCharacters(query)
       .subscribe((res: any) => {
         this.characters = res.charactersList
         this.info = res.info

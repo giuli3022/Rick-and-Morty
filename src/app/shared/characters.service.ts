@@ -51,7 +51,7 @@ export class CharactersService {
     }
 
 
-    filterCharacters(query = '', page = 1): Observable<Character[]> {
+    filterCharacters(query : any, page = 1): Observable<Character[]> {
         return this.http
             .get(`${environment.url}/character/?name=${query}&page=${page}`)
             .pipe(
