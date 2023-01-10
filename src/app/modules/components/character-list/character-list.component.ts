@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Character } from 'src/app/shared/characters.interface';
 import { CharactersService } from 'src/app/shared/characters.service';
 
@@ -11,7 +11,7 @@ type RequestInfo = {
   styleUrls: ['./character-list.component.scss']
 })
 
-export class CharacterListComponent implements OnInit {
+export class CharacterListComponent {
   @Input() character!: Character;
   info: RequestInfo = {
     next: '',
@@ -20,17 +20,5 @@ export class CharacterListComponent implements OnInit {
 
   constructor(private charactersService: CharactersService) { }
 
-  ngOnInit(): void {
-    console.log(this.character)
-    //this.getCharacters()
-  }
-/*
-  getCharacters(): void {
-    this.charactersService.filterCharacters('rick')
-      .subscribe((res: any) => {
-        this.characters = res.charactersList
-        this.info = res.info
-      })
-  }
-*/
+
 }

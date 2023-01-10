@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { CharacterListComponent } from './modules/components/character-list/character-list.component';
 import { CharactersComponent } from './modules/views/characters/characters.component';
 import { CommonModule } from '@angular/common';
-import { SearchComponent } from './modules/components/search/search.component';
 
 const components = [
   AppComponent,
@@ -16,7 +15,6 @@ const components = [
   CharacterComponent,
   CharactersComponent,
   CharacterListComponent,
-  SearchComponent
 ]
 
 @NgModule({

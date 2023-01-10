@@ -1,4 +1,4 @@
-import { Component, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Character } from 'src/app/shared/characters.interface';
 import { CharactersService } from 'src/app/shared/characters.service';
 
@@ -13,7 +13,7 @@ type RequestInfo = {
   styleUrls: ['./characters.component.scss']
 })
 
-export class CharactersComponent implements OnChanges {
+export class CharactersComponent implements OnInit, OnChanges {
   @Output() characters: Character[] = []
   info: RequestInfo = {
     next: '',
@@ -23,6 +23,11 @@ export class CharactersComponent implements OnChanges {
   filterValue: string = '';
 
   constructor(private charactersService: CharactersService) { }
+
+  ngOnInit(): void {
+    this.getCharacters(this.query)
+    
+  }
 
 	ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes['query']) {
@@ -40,7 +45,6 @@ export class CharactersComponent implements OnChanges {
   }
 
   getCharacters(query: string | null): void {
-    console.log('1', query)
     this.charactersService.filterCharacters(query)
       .subscribe((res: any) => {
         this.characters = res.charactersList
