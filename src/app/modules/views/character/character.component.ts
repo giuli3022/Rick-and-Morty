@@ -10,12 +10,14 @@ import { CharactersService } from 'src/app/shared/characters.service';
   styleUrls: ['./character.component.scss']
 })
 export class CharacterComponent implements OnInit {
+  id: number = 1
+  count: number = 100
   //TODO: cambiar este any
   character: any;
+  msgBox: boolean = false;
+  msgSent: boolean = false;
 
   constructor(private charactersService: CharactersService, private route: ActivatedRoute) { }
-  id = 1
-  count = 100
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -30,6 +32,14 @@ export class CharacterComponent implements OnInit {
 
   ngOnChanges(): void {
     this.getRandomId()
+  }
+
+  showMsg() {
+    this.msgBox = !this.msgBox;
+  }
+
+  sendMsg() {
+    this.msgSent = !this.msgSent;
   }
 
   getRandomId() {
