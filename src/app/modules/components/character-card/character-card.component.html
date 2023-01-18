@@ -1,0 +1,10 @@
+<section class="CharacterCard">
+  <a [routerLink]="['/character', character.id]">
+    <div class="CharacterCard__img">
+      <img [src]="character.image" [alt]="character.name" />
+    </div>
+    <div class="CharacterCard__info">
+      <p>{{ character.name }}</p>
+    </div>
+  </a>
+</section>

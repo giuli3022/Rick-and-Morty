@@ -6,19 +6,17 @@ type RequestInfo = {
   next: string;
 }
 @Component({
-  selector: 'app-character-list',
-  templateUrl: './character-list.component.html',
-  styleUrls: ['./character-list.component.scss']
+  selector: 'app-character-card',
+  templateUrl: './character-card.component.html',
+  styleUrls: ['./character-card.component.scss']
 })
 
-export class CharacterListComponent {
+export class CharacterCardComponent {
   @Input() character!: Character;
   info: RequestInfo = {
     next: '',
   }
   private page = 1
-
-  constructor(private charactersService: CharactersService) { }
 
 
 }

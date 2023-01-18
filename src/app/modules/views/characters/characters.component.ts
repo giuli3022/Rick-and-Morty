@@ -39,7 +39,7 @@ export class CharactersComponent implements OnInit, OnChanges {
 
   applyFilter(event: Event) {
     this.query = (event.target as HTMLInputElement).value
-    if (this.query && this.query.length > 3) {
+    if (this.query && this.query.length > 2) {
       this.getCharacters(this.query)
     }
   }

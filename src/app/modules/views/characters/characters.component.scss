@@ -1,19 +1,25 @@
 @use "styles" as styles;
 
-.CharactersList {
+.Characters {
     height: 100%;
     article {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding-top: 2rem;
     }
-    &__actions {
+    &--search {
+        width: 50%;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        border: none;
+        margin-bottom: 1rem;
+    }
+    &__list {
+        width: 100%;
         display: flex;
-        justify-content: space-between;
-        a {
-            width: calc(50% - 0.5rem);
-            height: 3rem;
-        }
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

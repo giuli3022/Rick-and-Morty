@@ -1,0 +1,35 @@
+@use "./variables" as variables;
+
+.CharacterCard {
+    height: 9rem;
+    width: 9rem;
+    margin: 0.3rem;
+    a {
+        color: white;
+        text-decoration: none;
+    }
+    &__img {
+        height: 7rem;
+        width: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: 9px;
+            border-top-right-radius: 9px;
+        }
+    }
+    &__info {
+        background-color: #04b1cb;
+        height: 2rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom-left-radius: 9px;
+        border-bottom-right-radius: 9px;
+        p {
+            margin: 0;
+        }
+    }
+}

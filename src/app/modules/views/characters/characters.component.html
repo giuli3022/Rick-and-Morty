@@ -1,17 +1,18 @@
-<section class="CharactersList">
+<section class="Characters container">
   <a class="Button--back" routerLink="/">Return to past</a>
   <article>
     <input
+      class="Characters--search"
       type="text"
       (keyup)="applyFilter($event)"
       placeholder="Search someone..."
     />
     
-    <div class="w-100 d-flex flex-wrap justify-content-center">
-      <app-character-list
+    <div class="Characters__list">
+      <app-character-card
         [character]="character"
         *ngFor="let character of characters"
-      ></app-character-list>
+      ></app-character-card>
     </div>
   </article>
 </section>
