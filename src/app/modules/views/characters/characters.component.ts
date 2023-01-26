@@ -18,34 +18,47 @@ export class CharactersComponent implements OnInit, OnChanges {
   info: RequestInfo = {
     next: '',
   };
-  private page = 1
+  page: number = 1; 
   query: string = '';
   filterValue: string = '';
 
   constructor(private charactersService: CharactersService) { }
 
   ngOnInit(): void {
-    this.getCharacters(this.query)
-    
+    this.getCharacters(this.query, this.page)
+
   }
 
-	ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes['query']) {
       this.filterValue = changes['query'].currentValue
+    } else {
+      this.query = ''
     }
-    this.getCharacters(this.query)
+    this.getCharacters(this.query, this.page)
   }
 
+  nextPage() {
+    this.page = this.page + 1
+    this.getCharacters(this.query, this.page)
+    console.log(this.page)
+  }
+
+  prevPage() {
+    this.page = this.page - 1
+    this.getCharacters(this.query, this.page)
+    console.log(this.page)
+  }
 
   applyFilter(event: Event) {
     this.query = (event.target as HTMLInputElement).value
     if (this.query && this.query.length > 2) {
-      this.getCharacters(this.query)
+      this.getCharacters(this.query, this.page)
     }
   }
 
-  getCharacters(query: string | null): void {
-    this.charactersService.filterCharacters(query)
+  getCharacters(query: string | null, page: number): void {
+    this.charactersService.filterCharacters(query, page)
       .subscribe((res: any) => {
         this.characters = res.charactersList
         this.info = res.info

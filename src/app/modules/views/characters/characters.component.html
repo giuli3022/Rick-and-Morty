@@ -9,10 +9,12 @@
     />
     
     <div class="Characters__list">
+      <button (click)="prevPage()">a</button>
       <app-character-card
         [character]="character"
         *ngFor="let character of characters"
       ></app-character-card>
+      <button (click)="nextPage()">b</button>
     </div>
   </article>
 </section>
