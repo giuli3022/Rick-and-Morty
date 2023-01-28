@@ -4,7 +4,7 @@
     <header>
       <h1>Is what you looking for?</h1>
     </header>
-    <div class="MainContent">
+    <div class="Character__container">
       <div class="Character__card">
         <ng-container *ngIf="!msgSent">
           <div class="Character__img">
@@ -21,7 +21,7 @@
             </p>
             <div class="Character__actions">
               <div *ngIf="!msgBox" class="Character__actions--options">
-                <a class="Button--secondary" [routerLink]="['/character', id]">
+                <a class="Button--secondary" (click)="getRandomId()">
                   In another timeline
                 </a>
                 <a type="button" class="Button--primary" (click)="showMsg()">

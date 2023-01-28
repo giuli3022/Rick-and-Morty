@@ -57,6 +57,9 @@ export class CharactersComponent implements OnInit, OnChanges {
     this.query = (event.target as HTMLInputElement).value
     if (this.query && this.query.length > 2) {
       this.getCharacters(this.query, this.page)
+    } else {
+      this.query = ''
+      this.getCharacters(this.query, this.page)
     }
   }
 

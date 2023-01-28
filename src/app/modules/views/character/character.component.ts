@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Character } from 'src/app/shared/characters.interface';
 import { CharactersService } from 'src/app/shared/characters.service';
 
@@ -12,22 +11,18 @@ import { CharactersService } from 'src/app/shared/characters.service';
 export class CharacterComponent implements OnInit {
   id: number = 1
   count: number = 100
-  //TODO: cambiar este any
-  character: any;
+  character!: Character;
   msgBox: boolean = false;
   msgSent: boolean = false;
 
-  constructor(private charactersService: CharactersService, private route: ActivatedRoute) { }
+  constructor(
+    private charactersService: CharactersService,
+    private _router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.id = params['id']
-      this.charactersService.getCharacter(this.id)
-        .subscribe((res: any) => {
-          this.character = res;
-        })
-    })
-    this.getRandomId()
+    this.getCharacterData()
   }
 
   ngOnChanges(): void {
@@ -42,12 +37,24 @@ export class CharacterComponent implements OnInit {
     this.msgSent = !this.msgSent;
   }
 
+  getCharacterData() {
+    this.route.params.subscribe((params) => {
+      this.id = params['id']
+      this.charactersService.getCharacter(this.id)
+        .subscribe((res: any) => {
+          this.character = res;
+        })
+      this.charactersService.getAllCharacters()
+        .subscribe((res: any) => {
+          this.count = res.info.count
+        })
+    })
+  }
+
   getRandomId() {
-    this.charactersService.getAllCharacters()
-      .subscribe((res: any) => {
-        this.count = res.info.count
-      })
     this.id = Math.floor(Math.random() * this.count);
+    console.log(this.id)
+    this._router.navigate([`/character/${this.id}`])
   }
 
 }
