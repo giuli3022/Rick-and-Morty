@@ -22,6 +22,7 @@ export class CharactersComponent implements OnInit, OnChanges {
   totalPages: number = 2;
   query: string = '';
   filterValue: string = '';
+  showBtn = true;
 
   constructor(private charactersService: CharactersService) { }
 
@@ -40,18 +41,14 @@ export class CharactersComponent implements OnInit, OnChanges {
   }
 
   nextPage() {
-    if (this.page === this.totalPages) {
-      alert('no se puede ir para delante')
-    } else {
+    if (this.page !== this.totalPages) {
       this.page = this.page + 1
       this.getCharacters(this.query, this.page)
     }
   }
 
   prevPage() {
-    if (this.page === 1) {
-      alert('no se puede ir para atrás')
-    } else {
+    if (this.page !== 1) {
       this.page = this.page - 1
       this.getCharacters(this.query, this.page)
     }

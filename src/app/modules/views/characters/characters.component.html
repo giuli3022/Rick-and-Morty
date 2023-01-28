@@ -1,20 +1,25 @@
 <section class="Characters container">
-  <a class="Button--back" routerLink="/">Return to past</a>
   <article>
-    <input
-      class="Characters--search"
-      type="text"
-      (keyup)="applyFilter($event)"
-      placeholder="Search someone..."
-    />
-    
+    <a class="Button--back" routerLink="/">Return to past</a>
+    <header>
+      <input
+        class="Characters--search"
+        type="text"
+        (keyup)="applyFilter($event)"
+        placeholder="Search someone..."
+      />
+    </header>
     <div class="Characters__list">
-      <button class="Button__page Button__page--prev" (click)="prevPage()">prev</button>
+      <button class="Button__page Button__page--prev" [ngClass]="{'d-none': page === 1}" (click)="prevPage()">
+        prev
+      </button>
       <app-character-card
         [character]="character"
         *ngFor="let character of characters"
       ></app-character-card>
-      <button class="Button__page Button__page--next" (click)="nextPage()">next</button>
+      <button class="Button__page Button__page--next" [ngClass]="{'d-none': page === totalPages}" (click)="nextPage()">
+        next
+      </button>
     </div>
   </article>
 </section>
