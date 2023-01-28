@@ -1,51 +1,56 @@
 <section class="Character">
-  <a class="Button--back" routerLink="/"> Return to past </a>
   <article>
-    <h1>Is what you looking for?</h1>
-
-    <div class="Character__card">
-      <ng-container *ngIf="!msgSent">
-        <div class="Character__img">
-          <img [src]="character.image" [alt]="character.name" />
-        </div>
-        <div class="Character__info">
-          <h3>{{ character.name }}</h3>
-          <button class="Button--label">Human</button>
-          <p>
-            {{ character.gender }}
-          </p>
-          <p>
-            {{ character.location.name }}
-          </p>
-          <div class="Character__actions">
-            <div *ngIf="!msgBox" class="Character__actions--options">
-              <a class="Button--secondary" [routerLink]="['/character', id]">
-                In another timeline
-              </a>
-              <a type="button" class="Button--primary" (click)="showMsg()">
-                Say hello!
-              </a>
-            </div>
-            <div *ngIf="msgBox" class="Character__actions--message">
-              <h6>Say something nice to {{ character.name }}</h6>
-              <input type="text" placeholder="Hi {{ character.name }}!" />
-              <div>
-                <a class="Button--secondary" (click)="showMsg()">
-                  I regretted...
+    <a class="Button--back" routerLink="/"> Return to past </a>
+    <header>
+      <h1>Is what you looking for?</h1>
+    </header>
+    <div class="MainContent">
+      <div class="Character__card">
+        <ng-container *ngIf="!msgSent">
+          <div class="Character__img">
+            <img [src]="character.image" [alt]="character.name" />
+          </div>
+          <div class="Character__info">
+            <h3>{{ character.name }}</h3>
+            <button class="Button--label">Human</button>
+            <p>
+              {{ character.gender }}
+            </p>
+            <p>
+              {{ character.location.name }}
+            </p>
+            <div class="Character__actions">
+              <div *ngIf="!msgBox" class="Character__actions--options">
+                <a class="Button--secondary" [routerLink]="['/character', id]">
+                  In another timeline
                 </a>
-                <a type="button" class="Button--primary" (click)="sendMsg()"> Send message! </a>
+                <a type="button" class="Button--primary" (click)="showMsg()">
+                  Say hello!
+                </a>
+              </div>
+              <div *ngIf="msgBox" class="Character__actions--message">
+                <h6>Say something nice to {{ character.name }}</h6>
+                <input type="text" placeholder="Hi {{ character.name }}!" />
+                <div>
+                  <a class="Button--secondary" (click)="showMsg()">
+                    I regretted...
+                  </a>
+                  <a type="button" class="Button--primary" (click)="sendMsg()">
+                    Send message!
+                  </a>
+                </div>
               </div>
             </div>
           </div>
+        </ng-container>
+        <div class="Character__contacted" *ngIf="msgSent">
+          <h3>Your message is traveling in space!</h3>
+          <p>
+            Your message to {{ character.name }} is on the way. Go meet new
+            people!
+          </p>
+          <a type="button" class="Button--primary" routerLink="/"> Go home </a>
         </div>
-      </ng-container>
-      <div class="Character__contacted" *ngIf="msgSent">
-        <h3>Your message is traveling in space!</h3>
-        <p>
-          Your message to {{ character.name }} is on the way. Go meet new
-          people!
-        </p>
-        <a type="button" class="Button--primary" routerLink="/"> Go home </a>
       </div>
     </div>
   </article>

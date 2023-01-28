@@ -21,15 +21,23 @@
     }
     &__info {
         background-color: #04b1cb;
-        height: 2rem;
+        height: 2.5rem;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 0 0.3rem;
         border-bottom-left-radius: 9px;
         border-bottom-right-radius: 9px;
         p {
+            line-height: 1rem;
+            font-size: 0.9rem;
+            text-align: center;
             margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
         }
     }
 }

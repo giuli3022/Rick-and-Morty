@@ -18,7 +18,8 @@ export class CharactersComponent implements OnInit, OnChanges {
   info: RequestInfo = {
     next: '',
   };
-  page: number = 1; 
+  page: number = 1;
+  totalPages: number = 2;
   query: string = '';
   filterValue: string = '';
 
@@ -39,15 +40,21 @@ export class CharactersComponent implements OnInit, OnChanges {
   }
 
   nextPage() {
-    this.page = this.page + 1
-    this.getCharacters(this.query, this.page)
-    console.log(this.page)
+    if (this.page === this.totalPages) {
+      alert('no se puede ir para delante')
+    } else {
+      this.page = this.page + 1
+      this.getCharacters(this.query, this.page)
+    }
   }
 
   prevPage() {
-    this.page = this.page - 1
-    this.getCharacters(this.query, this.page)
-    console.log(this.page)
+    if (this.page === 1) {
+      alert('no se puede ir para atrás')
+    } else {
+      this.page = this.page - 1
+      this.getCharacters(this.query, this.page)
+    }
   }
 
   applyFilter(event: Event) {
@@ -62,6 +69,8 @@ export class CharactersComponent implements OnInit, OnChanges {
       .subscribe((res: any) => {
         this.characters = res.charactersList
         this.info = res.info
+        this.totalPages = res.info.pages
+        console.log(this.page, this.totalPages)
       })
   }
 }

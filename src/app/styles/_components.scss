@@ -36,4 +36,17 @@
         border: none;
         border-radius: 1rem;
     }
+    &__page {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        color: white;
+        top: calc(50% - 2rem);
+        &--prev {
+            left: -2rem;
+        }
+        &--next {
+            right: -2rem;
+        }
+    }
 }
