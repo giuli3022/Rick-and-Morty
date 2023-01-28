@@ -22,7 +22,6 @@ export class CharactersComponent implements OnInit, OnChanges {
   totalPages: number = 2;
   query: string = '';
   filterValue: string = '';
-  showBtn = true;
 
   constructor(private charactersService: CharactersService) { }
 
